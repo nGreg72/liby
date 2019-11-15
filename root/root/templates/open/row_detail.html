@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load replaceMe %}
+
+{#Заполняем пустотой ненужные блоки#}
+{% block content %}
+{% endblock %}
+{% block Zakup_content %}
+{% endblock %}
+
+
+{% block row_content %}
+    {{ current_row.photo }}<br>
+    Номер - {{ current_row.id }} <br>
+    Название - <u>{{ current_row.title }}</u><br>
+    Описание - {{ current_row.message|replaceAll|striptags }}<br>
+    Цена - <b>{{ current_row.price }} </b> руб.
+
+{% endblock %}

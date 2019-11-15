@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load replaceMe %}
+
+{% block content %}
+    А теперя это уже нихуя не дефолтный блок
+
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h5 class="text-white h4">Тута будет описание закупки</h5>
+                <span class="text-muted">{{ Zakup_id.text|striptags|replaceAll}}</span>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block Zakup_content %}
+<div style="display: grid; grid-gap: 12px; width: 1240px; grid-template-columns: repeat(auto-fill, 300px); margin-left: 100px;">
+    {% for foo in all_ryad_list %}
+        <a href="{% url 'row_id_url' id=foo.id %}" class="card-link">
+            <div class="card" style="width: 18rem;">
+                <img src=" {% static foo.photo %} " class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ foo.title|replaceAll|striptags }}</h5>
+    {#                <p class="card-text">  {{ foo.message|striptags|replaceAll|truncatewords:15 }}      </p>#}
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}

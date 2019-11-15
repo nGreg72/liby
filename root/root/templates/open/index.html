@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load replaceMe %}
+{% load staticfiles %}
+
+{% block content %}
+    А теперя это уже нихуя не дефолтный блок
+    <br><br>
+{% endblock %}
+
+{% block allZakup %}
+    <div class="card mb-3" style="display: grid; grid-gap: 12px; width: 1450px; grid-template-columns: repeat(auto-fill, 470px); margin-left: 25px;">
+    {% for name in Zakup_names %}
+        <a href=" {% url 'zakup_id_url' id=name.id %} " class="row no-gutters" style="border: 2px solid #868686; color: #212529">
+            <div class="col-md-4">
+                <img src=" {% static name.foto %} " class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+{#                    <h5 class="card-title"> {{ name.title|replaceMe5 }} ( {{ name.id }} ) </h5>#}
+                    <h5 class="card-title"> {{ name.title|replaceAll }} ( {{ name.id }} ) </h5>
+{#                    <p class="card-text"> {{ name.text|striptags|replaceMe1|replaceMe2|replaceMe3|replaceMe4|truncatewords:15 }} </p>#}
+                    <p class="card-text"> {{ name.text|striptags|replaceAll|truncatewords:15 }} </p>
+                    <p class="card-text"><small class="text-muted"></small>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                    </p>
+                    dost - {{ name.dost }}
+                    <br>
+                    Org - {{ RealName.realname }}
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
+
+
