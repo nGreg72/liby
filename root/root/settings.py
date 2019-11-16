@@ -49,8 +49,7 @@ INSTALLED_APPS = [
     'org',
     'vieworder.apps.VieworderConfig',
     'open.templatetags',
-    'new',
-    'old',
+    'exchange',
 ]
 
 MIDDLEWARE = [
