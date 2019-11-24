@@ -9,7 +9,7 @@ from django.db import models
 
 
 class SpZakup(models.Model):
-    id = models.AutoField(unique=True)
+    id = models.AutoField(primary_key=True, unique=True)
     user = models.IntegerField()
     title = models.CharField(max_length=255)
     text = models.TextField()
