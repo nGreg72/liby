@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('basket/', include('basket.urls')),
     path('open/', include('open.urls')),
+    path('', include('open.urls')),
     path('editzp/', include('editzp.urls')),
     path('org/', include('org.urls')),
     path('vieworder/', include('vieworder.urls')),

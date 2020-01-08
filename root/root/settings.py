@@ -80,6 +80,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request'
             ],
+            'libraries': {  # Adding this section should work around the issue.
+                # Регистрация "staticfiles" в библиотеке тэгов
+                'staticfiles': 'django.templatetags.static',
+            },
         },
     },
 ]
@@ -105,26 +109,14 @@ DATABASES = {
         'PORT': '3306',
         'USER': 'root',
         'PASSWORD': '',
-        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
     },
-    'newDB': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'newDB',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '',
-    },
-    'oldDB': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'u493783',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '',
+    'options': {
         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
     }
 }
+
+AUTH_USER_MODEL = 'auth.User'
+# AUTH_USER_MODEL = 'liby.CustomUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -147,7 +139,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-Ru'
+LANGUAGE_CODE = 'ru'
+# LANGUAGE_CODE = 'en-En'
 
 TIME_ZONE = 'UTC'
 
@@ -161,10 +154,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/root/static/'
-STATICFILES_DIRS =(
-    BASE_DIR+'/root/static',
+STATICFILES_DIRS = (
+    BASE_DIR + '/root/static',
 )
 TEMPLATE_DIRS = (
-    BASE_DIR+'/templates/',
+    BASE_DIR + '/templates/',
 )
-

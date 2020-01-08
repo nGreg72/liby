@@ -5,13 +5,14 @@ from .models import SpZakup, SpRyad, PunbbUsers
 def Zakup_list(request):
     status = 3                                              # Статус закупок
     orgId = 3 #615
-    limit = 15                                              # Лимит закупок на странице
+    limit = 4                                              # Лимит закупок на странице
 
     """Все закупки с органичением по количеству"""
     # ZakupList = SpZakup.objects.all()[0:limit]
 
     """Закупки конкретных оргов с ограничением по количеству и сортировкой"""
     ZakupList = SpZakup.objects.filter(status=status).order_by('-id')[0:limit]
+    # ZakupList = SpZakup.objects.all()
     RealName = PunbbUsers.objects.get(id=orgId)
     # RealName = PunbbUsers.objects.all().select_related(ZakupList.user)
 
